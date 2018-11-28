@@ -1,0 +1,25 @@
+{
+  "name": "ionicFood",
+  "version": "1.0.0",
+  "main": "server.js",
+  "bin": {
+    "ionicFood": "express.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "consolidate": "^0.15.1",
+    "ejs": "^2.6.1",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^5.3.13",
+    "nodemon": "^1.18.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

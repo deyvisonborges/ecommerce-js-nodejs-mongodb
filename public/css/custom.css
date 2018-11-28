@@ -1,0 +1,13 @@
+.bg-light {
+    background-color: #000 !important;
+}
+
+.navbar-light .navbar-brand {
+    color: #fff !important;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
+    color: #28a745 !important;
+}
