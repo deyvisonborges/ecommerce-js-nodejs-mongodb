@@ -1,0 +1,43 @@
+<!--<br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 style="text-align: center; font-size: 6rem;">404</h1>
+                        <h6  style="text-align: center; font-size: 2rem;">Página não encontrada</h6>
+                    </div>
+                </div>
+            </div>
+        <div class="col-sm-3"></div>
+    </div>
+
+    -->
+<br><br>
+<div class="container">
+    <div class="row">
+        <h2>Tabela de categorias</h2> <br><br><br>
+         <div class="table-responsive">
+            <table class="table">
+                <thead>       
+                    <tr>
+                        <th scope="col">Título</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Data de Criação</th>
+                    </tr>
+                    {{#each categoria}}
+                        <tr>
+                            <td>{{titulo}}</td>
+                            <td>{{descricao}}</td>
+                            <td>{{dataCriacao}}</td>
+                        </tr>
+                    {{else}}
+                    {{/each}}
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+    
+</div>

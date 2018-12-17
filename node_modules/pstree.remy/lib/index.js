@@ -26,7 +26,7 @@ module.exports = function main(pid, callback) {
 };
 
 if (!module.parent) {
-  module.exports(process.argv[2], pids => console.log(pids));
+  module.exports(process.argv[2], (e, pids) => console.log(pids));
 }
 
 module.exports.hasPS = hasPS;

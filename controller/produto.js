@@ -1,30 +1,27 @@
 'use strict'
+const produto_repository = require('../repositories/produto')
 
-require('../models/produto')
-
-const mongoose = require('mongoose')
-const produto = mongoose.model('Produto')
-
-// conceito de Funcões Construturas - JavaScript
 function produto_controller() {}
 
 produto_controller.prototype.post = async (req, res, next) => { 
-    let p = new produto(req.body)
-    let result = await p.save()
-    res.redirect('/success')
+    let p = await new produto_repository().create(req.body)
+    res.send(p)
 }
 produto_controller.prototype.put = async (req, res) => { 
-    await produto.findByIdAndUpdate(req.params.id, {$set: req.body})
-    let p = await produto.findById(req.params.id)
+    let p = await new produto_repository.create(req.params.id, req.body)
     res.send(p)
 }
 produto_controller.prototype.get = async (req, res) => {
-    res.render('form-produto')
+    let p = await new produto_repository.getAll()
+    res.send(p)
  }
 produto_controller.prototype.getById = async (req, res) => { 
-    let p = await produto.findById(req.params.id)
+    let p = await new produto_repository.getById(req.params.id)
     res.send(p)
 }
-produto_controller.prototype.delete =  (req, res) => { }
+produto_controller.prototype.delete = async (req, res) => { 
+    let deletado = await new produto_repository.delete(req.params.id)
+    res.send(deletado)
+}
 
 module.exports = produto_controller;

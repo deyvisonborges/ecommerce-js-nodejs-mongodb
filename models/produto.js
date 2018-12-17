@@ -12,12 +12,11 @@ const produto_model = new schema({
     dataCriacao: {type: Date, default: Date.now}
 }, {versionKey: false})
 
-// antes de salvar ele verifica se foi setado a data
 produto_model.pre('save', next => {
     let agora = new Date()
     if (!this.dataCriacao) {
         this.dataCriacao = agora
-        next() // prossiga pro salvamento
+        next()
     }
 })
 

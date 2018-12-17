@@ -179,9 +179,6 @@
       supportsTransitionEnd: function supportsTransitionEnd() {
         return Boolean(TRANSITION_END);
       },
-      isElement: function isElement(obj) {
-        return (obj[0] || obj).nodeType;
-      },
       typeCheckConfig: function typeCheckConfig(componentName, config, configTypes) {
         for (var property in configTypes) {
           if (Object.prototype.hasOwnProperty.call(configTypes, property)) {
