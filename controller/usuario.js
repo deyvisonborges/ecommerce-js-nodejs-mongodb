@@ -1,70 +1,61 @@
 'use strict'
 
-const validation = require('../bin/helpers/validation')
-const usuario_repository = require('../repositories/usuario')
-const user = new usuario_repository
+const User = require('../repositories/user')
 
+function user_control() {}
 
-function usuario_controller() {}
+// controllers de registro de usuários
+user_control.prototype.getRegistro = async (req, res) => { res.render('pages/user/register') }
+user_control.prototype.postRegistro = async (req, res, next) => {
+    try {
+        const user = await User.registerVerification(req.body.email);
+        if(!user) {
+            await User.create(req.body)
+            return res.redirect('/api/usuario/registro') 
+        } else {
+            res.send('Usuário já existe')
+        } 
+    } catch(err) {
+        next(err)
+    }
+}
 
-usuario_controller.prototype.post = async (req, res) => {
-    // garantir que ele vai passar pro resultado se ele tiver válido
-    let _validation_contract = new validation()   
-    let data = req.body
-
-    _validation_contract.isRequired(
-        data.email, 
-        'Informe seu email'
-    )
-    _validation_contract.isEmail(
-        data.email, 
-        'O email informado é inválido'
-    )
-    _validation_contract.isRequired(
-        data.senha, 
-        'A senha informada é inválida'
-    )
-    _validation_contract.isRequired(
-        data.senhaConfirmacao, 
-        'A senha de confirmação é obrigatória'
-    )
-    _validation_contract.isTrue(
-        data.senha != data.senhaConfirmacao, 
-        'A senha e a confirmação não são iguais'
-    )
-
-    /* para criar o usuario, o emial nao pode existir */
-    let usuarioEmailExiste = await user.isEmailExist(data.email)
-        if (usuarioEmailExiste) {
-            // se ele for diferente de undefined, vamos adicionar uma informacao
-            _validation_contract.isTrue(
-                (usuarioEmailExiste.nome != undefined, 
-                    ` Já existe o email ${data.email}`)
-            )
+// controllers de login de usuários
+user_control.prototype.getLogin = async (req, res) => { res.render('pages/user/login') }
+user_control.prototype.postLogin = async (req, res, next) => {
+    try {
+        const user = await User.loginVerification(req.body.senha)
+        if(user) {
+            return res.send('Login efetuado com sucesso')
+        } else {
+            return res.send('Não foi possível fazer login. Dados não conferem!')
         }
+    } catch(err) {
+        next(err)
+    }
+}
 
-    let result = await user.create(req.body)
-    res.send(result)
-} 
 
-usuario_controller.prototype.update = async (req, res) => {
+
+user_control.prototype.update = async (req, res) => {
     let result = await user.update(req.params.id, req.body)
     res.send(result)
 }
 
-usuario_controller.prototype.get = async (req, res) => {
-    let result = await user.getAll()
-    res.send(result)
+user_control.prototype.get = async (req, res) => {
+    res.render('pages/user/dashboard')
 }
 
-usuario_controller.prototype.getById = async (req, res) => {
+user_control.prototype.getById = async (req, res) => {
     let result = await user.getById(req.params.id)
     res.send(result)
 }
 
-usuario_controller.prototype.delete = async (req, res) => {
+user_control.prototype.delete = async (req, res) => {
     let result = await user.delete(req.params.id)
     res.send(result)
 }
 
-module.exports = usuario_controller
+
+
+module.exports = user_control

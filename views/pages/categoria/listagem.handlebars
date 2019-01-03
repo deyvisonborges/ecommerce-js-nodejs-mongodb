@@ -1,0 +1,99 @@
+<br><br><br><br>
+<main>
+  <div class="container">
+    
+    <!-- NAVEGAÇÃO -->
+    <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
+      <span class="navbar-brand">Categorias:</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link waves-effect waves-light" href="#">Todas
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link waves-effect waves-light" href="#">Mais acessadas</a>
+          </li>
+        </ul>
+          
+        <form class="form-inline">
+          <div class="md-form my-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Procurar" aria-label="Search">
+          </div>
+        </form>
+      </div>
+    </nav>
+
+
+    <section class="text-center mb-4">
+      <div class="row wow fadeIn animated" style="visibility: visible; animation-name: fadeIn;">
+        <!--CARDS -->
+        {{#each categorias}}
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body text-center">
+              <a href="" class="grey-text">
+                <h5>{{titulo}}</h5>
+              </a>
+                <h5>
+                  <strong>
+                    <a href="" class="dark-grey-text">{{descricao}}
+                      <span class="badge badge-pill danger-color">NEW</span>
+                    </a>
+                  </strong>
+                </h5>
+
+                <h4 class="font-weight-bold blue-text">
+                  <strong>R$ 00,00</strong>
+                </h4>
+            </div>
+          </div>
+        </div>
+        {{else}}
+
+        {{/each}}
+      </div>
+    </section>
+    
+    <!-- Paginação -->
+    <nav class="d-flex justify-content-center wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+      <ul class="pagination pg-blue">
+        <li class="page-item disabled">
+          <a class="page-link waves-effect waves-effect" href="#" aria-label="Previous">
+            <span aria-hidden="true">«</span>
+            <span class="sr-only">Anterior</span>
+          </a>
+        </li>
+        <li class="page-item active">
+          <a class="page-link waves-effect waves-effect" href="#">1
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link waves-effect waves-effect" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link waves-effect waves-effect" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link waves-effect waves-effect" href="#">4</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link waves-effect waves-effect" href="#">5</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link waves-effect waves-effect" href="#" aria-label="Next">
+            <span aria-hidden="true">»</span>
+            <span class="sr-only">Próximo</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+      
+  </div>
+</main>

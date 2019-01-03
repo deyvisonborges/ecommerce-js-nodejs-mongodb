@@ -1,13 +1,17 @@
 const express = require("express")
+const categoria_controller = require('../controller/category')
 const router = express.Router()
-const categoria_controller = require('../controller/categoria')
 
 let _control = new categoria_controller();
 
 router.get('/', _control.get)
-router.get('/:id', _control.getById)
+router.get('/:id(\\d+)', _control.getById)
 router.post('/', _control.post)
-router.put('/:id', _control.put)
-router.delete('/:id', _control.delete)
+router.put('/:id(\\d+)', _control.put)
+router.delete('/:id(\\d+)', _control.delete)
+
+// rotas do registro de categorias
+router.get('/registrar', _control.register)
+router.post('/registrar', _control.post)
 
 module.exports = router;

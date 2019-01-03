@@ -7,8 +7,7 @@ const produto_model = new schema({
     nome: {type: String, required: true, trim: true, index: true},
     descricao: {type: String, required: true},
     preco: {type: Number, required: true},
-    foto: {type: String, required: true},
-    ativo: {type: Boolean, required: true},
+    tag: {type: String, required: true},
     dataCriacao: {type: Date, default: Date.now}
 }, {versionKey: false})
 

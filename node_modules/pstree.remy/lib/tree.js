@@ -2,7 +2,7 @@ const spawn = require('child_process').spawn;
 
 module.exports = function(rootPid, callback) {
   const tree = {};
-  let output = '';
+  var output = '';
 
   // *nix
   const ps = spawn('ps', ['-A', '-o', 'ppid,pid']);

@@ -7,8 +7,6 @@ const schema = mongoose.Schema
 const categoria_model = new schema({
     titulo: {trim: true, index: true, required: true, type: String},
     descricao: {type: String, required: true},
-    foto: {type: String, required: true},
-    ativa: {type: Boolean, required: true},
     dataCriacao: {type: Date, default: Date.now}
 }, {versionKey: false })
 
@@ -21,7 +19,4 @@ categoria_model.pre('save', next => {
     }
 })
 
-module.exports = mongoose.model(
-    'Categoria', // informando minha coleção
-    categoria_model // meu modelo(ou tabela [caso fosse SQL]) a ser adicionado na minha coleção
-)
+module.exports = mongoose.model('Categoria', categoria_model)
