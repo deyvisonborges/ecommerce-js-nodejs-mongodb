@@ -1,4 +1,27 @@
-exports.post = async(repository, validationContract, req, res) => {
+
+
+/*
+
+    FEITO POR -->
+    
+    Dados pessoais: ______________________________
+        Deyvison Borges
+        web.dborges@gmail.com
+        https://dribbble.com/dee_borges
+        https://deeborges.github.io
+        https://github.com/deeborges
+    _______________________________________________
+
+    NESSA SESSÃO, RESOLVI NÃO UTILIZAR NADA.
+    PREFERI UTLIZAR OS PRINCIPIOS DE ORIENTACAO A OBJETOS, DESIGN PATTERNS E MVC...
+    O SISTEMA NAO ESTÁ NEM PERTO DE TERMINAR!
+
+    EM BREVE ESTAREI DESENVOLVENDO O FRONT-END COM BOOTSTRAP (JÁ TENHO ATÉ ALGO EM MENTE).
+
+*/
+
+
+/* exports.post = async(repository, validationContract, req, res) => {
     try {
         let data = req.body
         if (!validationContract.isValid()) {
@@ -93,3 +116,4 @@ exports.delete = async(repository, req, res) => {
     }
 }
 
+*/

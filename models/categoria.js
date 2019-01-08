@@ -5,7 +5,7 @@ const schema = mongoose.Schema
 
 // definindo o modelo
 const categoria_model = new schema({
-    titulo: {trim: true, index: true, required: true, type: String},
+    titulo: {trim: true, createIndexes: true , required: true, type: String},
     descricao: {type: String, required: true},
     dataCriacao: {type: Date, default: Date.now}
 }, {versionKey: false })

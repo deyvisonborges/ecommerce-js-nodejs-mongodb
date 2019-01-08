@@ -20,8 +20,7 @@ categoria_controller.prototype.put = async (req, res, next) => {
 categoria_controller.prototype.get = async (req, res, next) => {
     try {
         let categorias = await categoria.getAll()
-        let itemsCarrinho = await categoria.getItemsCart()
-        res.render('pages/categoria/listagem', {categorias: categorias, items: itemsCarrinho})
+        res.render('pages/categoria/_list', {categorias: categorias})
     }catch(err) {
         next(err)
     }

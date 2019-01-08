@@ -4,6 +4,9 @@ const variables = {
     },
     Database: {
         connection: process.env.connection || "mongodb://localhost:27017/"
+    },
+    AuthJson: {
+        secret: '232ioh3po4u23h42e23e03023ieh230he23'
     }
 }
 
