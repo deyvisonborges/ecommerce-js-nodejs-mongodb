@@ -22,7 +22,7 @@
                             <th>{{email}}</th>
                             <td>
                                 <a href="/api/usuario/edit/{{_id}}">
-                                    <button class="btn btn-success">
+                                    <button  class="btn" style="background-color: #299028;">
                                         <i class="fa fa-edit"></i>
                                     </button>
                                 </a>
@@ -30,7 +30,7 @@
                             <td>
                                 <form action="/api/usuario/{{_id}}" method="POST">
                                     <input type="hidden" name="id" value="{{_id}}">
-                                    <button type="text" class="btn btn-danger">
+                                    <button type="text" class="btn" style="background-color: #ef2222;">
                                         <i class="fa fa-trash"></i>
                                     </button>
                                 </form>

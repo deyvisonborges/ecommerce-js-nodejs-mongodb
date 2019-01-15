@@ -8,7 +8,8 @@ function user_control() {}
 
 user_control.prototype.get = async (req, res, next) => { 
     const users = await User.getAll()
-    res.render('pages/user/_users-list', {user: users}) 
+    const qtd = await User.getUsersQtd()
+    res.render('pages/user/_users-list', {user: users, qtd: qtd}) 
 }
 
 user_control.prototype.update = async (req, res, next) => {

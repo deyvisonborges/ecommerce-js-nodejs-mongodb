@@ -5,16 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Painel Administrativo</title>
 
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/all.css">
+    <!-- <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/all.css"> -->
 
+     <!--Podemos optar pelo materialize, lembrando que temos que alterar toda a estrutura do projeto -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="/css/custom.css">
   </head>
   <body>
       {{>_navbar}}
       {{{body}}}
     <script src="/js/all.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <!-- <script src="/js/bootstrap.min.js"></script>
     <script src="/js/jquery-3.3.1.min.js"></script>
-    <script src="/js/popper.min.js"></script>
+    <script src="/js/popper.min.js"></script> -->
+
+     <!-- Materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems, options);
+      });
+
+      // Or with jQuery
+
+      $(document).ready(function(){
+        $('.modal').modal();
+      });
+    </script>
   </body>
 </html>

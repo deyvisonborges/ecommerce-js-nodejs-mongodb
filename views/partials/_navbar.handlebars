@@ -1,28 +1,17 @@
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">ECOMMERCE</a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/api/usuario">Usuários</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/api/categoria">Categorias</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/api/produto">Produtos</a>
-                </li>
-            </ul>
-            <div class="col-sm-2">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/api/usuario/registro">Registro</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/api/usuario/login">Login</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
+<nav style="padding-left: 15px;">
+  <div class="nav-wrapper">
+    <a href="" class="brand-logo">Ecommerce</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li>
+        <a href="/api/usuario">
+        <i class="fa fa-user"></i> Usuários <span class="new badge">{{qtd}}</span></a>
+      </li>
+      <li><a href="/api/categoria">
+        <i class="fa fa-tags"></i>Categorias <span class="new badge"></span></a>
+      </li>
+      <li><a href="/api/produto">
+        <i class="fa fa-gift"></i> Produtos <span class="new badge"></span></a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -49,6 +49,11 @@ class User {
         const user = await user_model.findOne({email}).select('+senha')
         return user
     }
+
+    static async getUsersQtd() {
+        const qtd = await user_model.collection.estimatedDocumentCount()
+        return qtd  
+    }
 }
 
 module.exports = User

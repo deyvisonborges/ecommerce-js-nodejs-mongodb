@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const variables = require('../bin/config/variables')
 const hbs = require('express-handlebars')
 const session = require('express-session')
-
+const cors = require('cors')
 // app
 const app = express();
 
@@ -16,7 +16,7 @@ app.use(bodyParser.json({
 app.use(bodyParser.urlencoded({
     extended: true}
 ));
-
+app.use(cors())
 // habilitando CORS
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*')
@@ -47,7 +47,7 @@ app.set('view engine', 'handlebars') // Definir o motor de visualização para u
 app.use(express.static('public'))
 
 // configurando a conexao com o banco de dados
-mongoose.connect(variables.Database.connection, {useNewUrlParser: false})
+mongoose.connect(variables.Database.connection)
 mongoose.Promise = global.Promise
 
 // ao chamar minhas rotas

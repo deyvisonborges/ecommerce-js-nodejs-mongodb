@@ -24,7 +24,7 @@ produto_controller.prototype.put = async (req, res) => {
     res.send(p)
 }
 produto_controller.prototype.get = async (req, res) => {
-    res.render('form-produto')
+    res.render('pages/produtos/products')
  }
 produto_controller.prototype.getById = async (req, res) => { 
     let p = await new produto_repository.getById(req.params.id)
