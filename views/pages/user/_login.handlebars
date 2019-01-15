@@ -1,4 +1,5 @@
 <br><br><br>
+<!-- Login -->
 <section class="container-fluid">
     <div class="row">
         <div class="col-sm-3"></div>
@@ -8,17 +9,26 @@
                     {{error}}
                 </div>
             {{/if}}
-            <form action="" method="POST">
+
+            {{#if success}}
+                <div class="alert alert-success">
+                    {{success}}
+                </div>
+            {{/if}}
+            <form action="/api/usuario/login" method="POST">
                 <div class="form-group">
                     <i class="fa fa-user"></i>
                     <label for="email">Usuário</label>
-                    <input type="email" class="form-control" id="email" placeholder="Entre com seu email">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Entre com seu email">
                 </div>
                 <div class="form-group">
                     <i class="fa fa-key"></i>
                     <label for="senha">Senha</label>
-                    <input type="password" class="form-control" id="senha" placeholder="Entre com sua senha">
+                    <input type="password" class="form-control" name="senha" id="senha" placeholder="Entre com sua senha">
                 </div>
+                {{#if token}}
+                    <input type="hidden" name="_token" value="{{token}}">
+                {{/if}}
                 <button type="submit" class="btn btn-primary">Entrar</button>
             </form>
         </div>

@@ -1,5 +1,5 @@
 // Registrando modelos
-require('../models/produto')
+require('../models/product')
 const base = require('../bin/base/repository-base')
 
 class produto_repository { 

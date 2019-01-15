@@ -10,15 +10,25 @@ const session = require('express-session')
 const app = express();
 
 // Configurando o parse;
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+app.use(bodyParser.json({
+    limit: '5mb' // limitando o tamanho dos meus arquivos
+}));
+app.use(bodyParser.urlencoded({
+    extended: true}
+));
+
+// habilitando CORS
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-Width, Content-Type, Accept, x-access-token')
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    res.header('Access-Control-Allow-Credentials', '*')
+    res.header('Access-Control-Expose-Headers', 'x-access-token')
+    next()
+})
 
 // Configurando sessão
-app.use(session({
-    secret: '3l3tr0l4r',
-    resave: false,
-    saveUninitialized: false
-}))
+app.use(session({ secret: 'ecommerce', resave: false, saveUninitialized: false }))
 
 // chamando as rotas
 const categoria_router = require('../routes/categoria')
@@ -42,7 +52,7 @@ mongoose.Promise = global.Promise
 
 // ao chamar minhas rotas
 app.get('/', (req, res, next) => {
-    res.render('pages/user/_login')
+    res.send('Olá!')
 })
 
 // tratamento de erro 404

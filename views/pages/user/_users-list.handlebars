@@ -2,11 +2,13 @@
 <div class="container">
     <div class="table-responsive">
         <h2>Listagem de Usuários</h2> <br>
+        {{#if deleted}}
+            <span class="alert alert-success">{{deleted}}</span>
+        {{/if}}
         <table class="table table-striped table-bordered table-hover table-sm">
-            <caption>Listagem de Usuários</caption>
+            <caption>*Cuidado, aqui você não somente vizualiza com também, exclui e edita informações.</caption>
                 <thead class="thead-ligth">
                     <tr>
-                        <!-- <th>ID</th> -->
                         <th>Nome</th>
                         <th>Email</th>
                         <th>Editar</th>
@@ -16,7 +18,6 @@
                 <tbody>
                     {{#each user}}
                         <tr>
-                            <!-- <th>{{_id}}</th> -->
                             <th>{{nome}}</th>
                             <th>{{email}}</th>
                             <td>
@@ -27,17 +28,16 @@
                                 </a>
                             </td>
                             <td>
-                                <a href="/api/usuario/delete/{{_id}}">
-                                    <button class="btn btn-danger">
+                                <form action="/api/usuario/{{_id}}" method="POST">
+                                    <input type="hidden" name="id" value="{{_id}}">
+                                    <button type="text" class="btn btn-danger">
                                         <i class="fa fa-trash"></i>
                                     </button>
-                                </a>
+                                </form>
                             </td>
                         </tr>
                     {{else}}
-                        <tr>
-                            <th>Nenhum usuário encontrado</th>
-                        </tr>
+                        <p class="alert alert-danger">Nenhuma usuário encontrado</p>
                     {{/each}}
                 </tbody>
         </table>

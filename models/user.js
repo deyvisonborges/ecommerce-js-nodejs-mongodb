@@ -2,8 +2,10 @@ const mongoose = require('mongoose')
 
 const usuario_model = new mongoose.Schema({
     nome: {
-        type: String,
-        required: true,
+        trim: true, 
+        createIndexes: true, 
+        required: true, 
+        type: String
     },
     email: {
         type: String,
