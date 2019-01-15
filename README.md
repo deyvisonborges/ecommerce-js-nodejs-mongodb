@@ -1,8 +1,10 @@
 # Ecommerce com NodeJS + MongoDB
-O projeto ainda está em andamente. Estou criando classe e métodos assíncronos... Como estou fazendo esse projeto sozinho pode ser que 
-demore um bom tempo para eu poder terminar.
-Atualmente já estamos cadastrando e excluindo usuário nessa aplicação.
-Utilizo bootstrap somente pra agilidade, mais pra frente pretendo criar o frontend do zero.
+O projeto ainda está em andamento. Estou utilizando os princípios de OO e MVC. Como estou fazendo esse projeto sozinho pode ser que 
+demore um bom tempo para eu poder terminar, e também, quero frizar que estou aprendendo sozinho. O sistema já deveria está pronto com autenticação via token e mais... Porém são tópicos que ainda estou absorvendo.
+
+**Com conexão online, via mongoLab, podemos registrar usuários, listá-los e deletá-los.**
+### Estou tentando migrar o frontend para o Materialize.css
+
 # Nova roupagem!
 ![Alt Text](https://i.imgur.com/ijKQn7p.png)
 
