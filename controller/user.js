@@ -16,7 +16,7 @@ user_control.prototype.update = async (req, res, next) => {
     try {
         const data = req.body
         await User.update(req.params.id, data)
-        res.send('Dados atualizados com sucesso!')
+        return res.render('pages/user/_user-edit', {success: 'Dados atualizados com sucesso!'})
     } catch (err) {
         next(err)
     }

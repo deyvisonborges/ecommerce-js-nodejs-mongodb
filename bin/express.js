@@ -1,68 +1,42 @@
-// módulos
+// MÓDULOS
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose')
 const variables = require('../bin/config/variables')
 const hbs = require('express-handlebars')
 const session = require('express-session')
-const cors = require('cors')
-// app
+
+// APP
 const app = express();
 
-// Configurando o parse;
+// CONFIGURANDO O PARSER
 app.use(bodyParser.json({
-    limit: '5mb' // limitando o tamanho dos meus arquivos
+    limit: '5mb' // LIMITANDO O TAMANHO DE ARQUIVOS
 }));
 app.use(bodyParser.urlencoded({
     extended: true}
 ));
-app.use(cors())
-// habilitando CORS
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*')
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-Width, Content-Type, Accept, x-access-token')
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-    res.header('Access-Control-Allow-Credentials', '*')
-    res.header('Access-Control-Expose-Headers', 'x-access-token')
-    next()
-})
 
-// Configurando sessão
+// CONFIGURANDO A SESSÃO
 app.use(session({ secret: 'ecommerce', resave: false, saveUninitialized: false }))
 
-// chamando as rotas
-const categoria_router = require('../routes/categoria')
-const produto_router = require('../routes/produto')
+// CHAMANDO AS ROTAS
 const user_router = require('../routes/user')
 
-// nomeando as rotas
-app.use('/api/categoria', categoria_router)
-app.use('/api/produto', produto_router)
+// NOMEANDO AS ROTAS
 app.use('/api/usuario', user_router)
 
-//definindo o meu template engine
-app.engine('handlebars', hbs({defaultLayout: 'main'}))
-// Configurando Template Engine
-app.set('view engine', 'handlebars') // Definir o motor de visualização para usar
-app.use(express.static('public'))
+app.engine('handlebars', hbs({defaultLayout: 'main'})) // DEFININDO O MEU TEMPLATE ENGINE
+app.set('view engine', 'handlebars') // DEFININDO O MOTO DE VISUALIZAÇÃO
+app.use(express.static('public')) // CARREGANDO ARQUIVOS ESTÁTICOS
 
-// configurando a conexao com o banco de dados
-mongoose.connect(variables.Database.connection)
+// CONFIGURANDO A CONEXAO COM O BANCO DE DADOS
 mongoose.Promise = global.Promise
+mongoose.connect(variables.Database.connection)
 
-// ao chamar minhas rotas
-app.get('/', (req, res, next) => {
-    res.send('Olá!')
-})
 
-// tratamento de erro 404
-app.use((req, res, next) => {
-    res.render('pages/errors/404')
-})
-
-// tratamento de erro 500
-app.use((err, req, res, next) => {  
-   res.send(err.message)
-})
+app.use('/', (req, res, next) => { res.render('home') }) // ROTA PRINCIPAL
+app.use((req, res, next) => { res.render('pages/errors/404') }) // TRATAMENTO DE ERRO 404
+app.use((err, req, res, next) => { res.send(err.message) }) // TRATAMENTO PARA DEMAIS ERRROS
 
 module.exports = app;

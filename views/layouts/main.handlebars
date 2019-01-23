@@ -5,34 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Painel Administrativo</title>
 
-    <!-- <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/all.css"> -->
+    
+<!-- jQuery -->
+<script src="/js/jquery-2.0.0.min.js" type="text/javascript"></script>
 
-     <!--Podemos optar pelo materialize, lembrando que temos que alterar toda a estrutura do projeto -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="/css/custom.css">
+<!-- Bootstrap4 files-->
+<script src="/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+<link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+
+<!-- Font awesome 5 -->
+<link href="/fonts/fontawesome/css/fontawesome-all.min.css" type="text/css" rel="stylesheet">
+
+<!-- plugin: fancybox  -->
+<script src="/plugins/fancybox/fancybox.min.js" type="text/javascript"></script>
+<link href="/plugins/fancybox/fancybox.min.css" type="text/css" rel="stylesheet">
+
+<!-- plugin: owl carousel  -->
+<link href="/plugins/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+<link href="/plugins/owlcarousel/assets/owl.theme.default.css" rel="stylesheet">
+<script src="/plugins/owlcarousel/owl.carousel.min.js"></script>
+
+<!-- custom style -->
+<link href="/css/ui.css" rel="stylesheet" type="text/css"/>
+<link href="/css/responsive.css" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+
+<!-- custom javascript -->
+<script src="/js/script.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+/// some script
+
+// jquery ready start
+$(document).ready(function() {
+	// jQuery code
+
+}); 
+// jquery end
+</script>
+
   </head>
   <body>
       {{>_navbar}}
       {{{body}}}
-    <script src="/js/all.min.js"></script>
-    <!-- <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jquery-3.3.1.min.js"></script>
-    <script src="/js/popper.min.js"></script> -->
-
-     <!-- Materialize -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.modal');
-        var instances = M.Modal.init(elems, options);
-      });
-
-      // Or with jQuery
-
-      $(document).ready(function(){
-        $('.modal').modal();
-      });
-    </script>
+      {{>_footer}}
   </body>
 </html>

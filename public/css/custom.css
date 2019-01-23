@@ -1,7 +1,0 @@
-nav {
-    background-color: #211c1c;
-}
-
-span.badge.new:after {
-    content: ' ';
-}

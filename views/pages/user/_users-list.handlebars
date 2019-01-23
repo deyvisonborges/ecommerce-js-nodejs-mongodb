@@ -1,45 +1,59 @@
-<br><br><br>
-<div class="container">
-    <div class="table-responsive">
-        <h2>Listagem de Usuários</h2> <br>
-        {{#if deleted}}
-            <span class="alert alert-success">{{deleted}}</span>
-        {{/if}}
-        <table class="table table-striped table-bordered table-hover table-sm">
-            <caption>*Cuidado, aqui você não somente vizualiza com também, exclui e edita informações.</caption>
-                <thead class="thead-ligth">
-                    <tr>
-                        <th>Nome</th>
-                        <th>Email</th>
-                        <th>Editar</th>
-                        <th>Excluir</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each user}}
-                        <tr>
-                            <th>{{nome}}</th>
-                            <th>{{email}}</th>
-                            <td>
-                                <a href="/api/usuario/edit/{{_id}}">
-                                    <button  class="btn" style="background-color: #299028;">
-                                        <i class="fa fa-edit"></i>
-                                    </button>
-                                </a>
-                            </td>
-                            <td>
-                                <form action="/api/usuario/{{_id}}" method="POST">
-                                    <input type="hidden" name="id" value="{{_id}}">
-                                    <button type="text" class="btn" style="background-color: #ef2222;">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    {{else}}
-                        <p class="alert alert-danger">Nenhuma usuário encontrado</p>
-                    {{/each}}
-                </tbody>
+<div class="card">
+    <div class="card-body">
+        <table class="table table-hover shopping-cart-wrap">
+            <thead class="text-muted">
+                <tr>
+                    <th scope="col">Lista de usuários</th>
+                    <th scope="col" width="120"></th>
+                    <th scope="col" width="120"></th>
+                    <th scope="col" class="text-right" width="200"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each user}}
+                <tr>
+                    <td>
+                        <figure class="media">
+                            <div class="img-wrap">
+                                <img src="/images/voce.jpg" class="img-thumbnail img-sm">
+                            </div>
+                            <figcaption class="media-body">
+                                <h6 class="title text-truncate">{{nome}}</h6>
+                                <dl class="dlist-inline small">
+                                    <dt>Email: </dt>
+                                    <dd>{{email}}</dd>
+                                </dl>
+                                <dl class="dlist-inline small">
+                                    <dt>Perfil criado em: </dt>
+                                    <dd>À definir</dd>
+                                </dl>
+                            </figcaption>
+                        </figure> 
+                    </td>
+                    <td> </td>
+                    <td> </td>
+                    <td class="text-right" style="padding: 30px;"> 
+                        <a title="" href="/api/usuario/edit/id/{{_id}}" class="btn btn-outline-success"> 
+                            <i class="fa fa-edit"></i>
+                        </a> 
+                        <a class="btn btn-round">
+                            <form action="/api/usuario/delete/{{_id}}" method="POST">
+                                <input type="hidden" name="id" value="{{_id}}">
+                                <button class="btn btn-outline-danger btn-round" type="text">
+                                        <span class="icon is-small">
+                                        <i class="fas fa-trash"></i>
+                                        </span>
+                                </button>
+                            </form>
+                        </a>
+                    </td>
+                </tr>
+                {{else}}
+                    <div class="alert alert-warning">
+                        Nenhum usuário na lista!
+                    </div>
+                {{/each}}
+            </tbody>
         </table>
     </div>
 </div>

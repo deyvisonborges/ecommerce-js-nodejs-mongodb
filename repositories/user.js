@@ -8,48 +8,53 @@ const crypt = require('bcryptjs')
 const salt = 10
 
 class User {
-    // criando usuario
+    // CRIANDO USUARIO
     static async create(data) {
-        const newUser = { nome: data.nome, email: data.email, senha: data.senha }
-        const hash = await crypt.hash(newUser.senha, salt) // criptografo a senha
-        newUser.senha = hash  // adiciono a senha criptografada no campo senha do objeto newUser
+        const newUser = { 
+            nome: data.nome, 
+            email: data.email, 
+            senha: data.senha
+        }
+        const hash = await crypt.hash(newUser.senha, salt) // CRIPTOGRAFANDO A SENHA
+        newUser.senha = hash 
         return await user_model(newUser).save()
     }
 
-    // atualizando informacoes do usuario
+    // ATUALIZANDO USUARIO
     static async update(id, data) {
-        return await user_model.findByIdAndUpdate(id, { $set: data })
+        return await user_model.findOneAndUpdate(id, { $set: data })
     }
 
-    // deletando usuario
+    // DELETANDO USUARIO
     static async delete(id) {
-        return user_model.findByIdAndDelete(id)
+        return user_model.findOneAndDelete(id)
     }
 
-    // buscando usuario pelo ID
+    // BUSCANDO USUARIO PELO ID
     static async getById(id) {
         return await user_model.findById(id)
     }
 
-    // buscando todos os usuarios
+    // BUSCANDO TODOS OS USUARIOS
     static async getAll() {
         return await user_model.find({});
     }
 
-    // verificando usuario existente
+    // VERIFICACAO DE REGISTRO
     static async registerVerification(data) {
         const { email } = data
         const user = await user_model.findOne({email})
         return user
     }
 
-    // autenticando login
+    // AUTENTICANDO LOGIN
     static async loginVerification(data) {
         const { email, senha } = data
         const user = await user_model.findOne({email}).select('+senha')
         return user
     }
 
+    // QUANTIDADE DE USUARIOS NO BANCO
     static async getUsersQtd() {
         const qtd = await user_model.collection.estimatedDocumentCount()
         return qtd  

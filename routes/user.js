@@ -2,28 +2,19 @@
 
 const express = require('express')
 const router = express.Router()
-const controller = require('../controller/user')
-const auth = require('../middlewares/auth')
-let _c = new controller()
+const USER = require('../controller/user')
+// const auth = require('../middlewares/auth') MIDDLEWARE PARA AUTENTICACAO POR TOKEN (*_-)
+const _USER = new USER()
 
-// rest register
-router.get('/registro', _c.getRegistro)
-router.post('/registro', _c.postRegistro)
-// rest login
-router.get('/login', _c.getLogin)
-router.post('/login', _c.postLogin)
+router.get('/', _USER.get)
+router.get('/registro', _USER.getRegistro)
+router.get('/login', _USER.getLogin)
+router.get('/edit/id/:id', _USER.getById)
 
-router.get('/', _c.get)
-router.put('/:id', _c.update)
-router.post('/:id', _c.delete)
-
-// rest edicao e exclusão
-router.post('/edit', _c.update)
-router.get('/edit/:id(\\d+)', _c.getById)
-
-
-
-
-
+router.post('/registro', _USER.postRegistro)
+router.post('/login', _USER.postLogin)
+router.post('/edit', _USER.update)
+router.post('/update/:id', _USER.update)
+router.post('/delete/:id', _USER.delete)
 
 module.exports = router

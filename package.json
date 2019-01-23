@@ -8,6 +8,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "bulma": "^0.7.2",
     "connect-flash": "^0.1.1",
     "consolidate": "^0.15.1",
     "cookie-parser": "^1.4.3",
