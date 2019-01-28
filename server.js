@@ -1,4 +1,4 @@
-'use strict' // pra trabalhar com minificacao e outros recursos
+'use strict'
 
 const app = require('./bin/express')
 const variables = require('./bin/config/variables');
