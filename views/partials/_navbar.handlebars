@@ -1,0 +1,112 @@
+<header class="section-header">
+  <nav class="navbar navbar-top navbar-expand-lg navbar-dark bg-secondary">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" 
+      data-target="#navbarsExample07" aria-controls="navbarsExample07" 
+      aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample07">
+        <ul class="navbar-nav mr-auto">
+          <li><a href="#" class="nav-link"> <i class="fab fa-facebook"></i> </a></li>
+          <li><a href="#" class="nav-link"> <i class="fab fa-instagram"></i> </a></li>
+          <li><a href="#" class="nav-link"> <i class="fab fa-twitter"></i> </a></li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> Idioma </a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li><a class="dropdown-item" href="#">Português</a></li>
+                <li><a class="dropdown-item" href="#">Inglês</a></li>
+                <li><a class="dropdown-item" href="#">Espanhol </a></li>
+              </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="header-main shadow-sm">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-3 col-sm-4">
+        <div class="brand-wrap">
+          <img class="logo" src="">
+          <h2 class="logo-text">
+            <a href="/"> SEU LOGO </a>
+          </h2>
+        </div> <!-- brand-wrap.// -->
+        </div>
+        <div class="col-lg-4 col-xl-5 col-sm-8">
+            <form action="#" class="search-wrap">
+              <div class="input-group w-100">
+                  <input type="text" class="form-control" style="width:55%;" placeholder="Procurar">
+                  <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+            </form> <!-- search-wrap .end// -->
+        </div> <!-- col.// -->
+        <div class="col-lg-5 col-xl-4 col-sm-12">
+          <div class="widgets-wrap float-right">
+            <a href="#" class="widget-header mr-3">
+              <div class="icontext">
+                <div class="icon-wrap"><i class="icon-sm round border fa fa-shopping-cart"></i></div>
+                {{#if itens}}
+                  <div class="text-wrap">
+                    <span class="small badge badge-warning">{{itens}}</span>
+                    <div>Cart</div>
+                  </div>
+                {{else}}
+                  <div class="text-wrap">
+                    <span class="small badge badge-warning">0</span>
+                    <div>Cart</div>
+                  </div>
+                {{/if}}
+              </div>
+            </a>
+            <a href="#" class="widget-header mr-3">
+              <div class="icontext">
+                <div class="icon-wrap"><i class="icon-sm round border fa fa-heart"></i></div>
+                <div class="text-wrap">
+                  <small class="small badge badge-warning">2</small>
+                </div>
+              </div>
+            </a>
+            <div class="widget-header dropdown">
+              <a href="#" data-toggle="dropdown" data-offset="20,10">
+                <div class="icontext">
+                  <div class="icon-wrap"><i class="icon-sm round border fa fa-user"></i></div>
+                  <div class="text-wrap">
+                    <div><i class="fa fa-caret-down"></i> </div>
+                  </div>
+                </div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <div class="card">
+                  <article class="card-body">
+                      <a href="/api/usuario/login" class="btn btn-block btn-success"> 
+                        <i class="fa fa-lock"></i> &nbsp; Autenticar
+                      </a>
+                      <a href="/api/usuario/registro" class="btn btn-block btn-primary"> 
+                        <i class="fa fa-user"></i> &nbsp; Cadastrar
+                      </a>
+                      <a href="/api/usuario" class="btn btn-block btn-warning"> 
+                        <i class="fa fa-users"></i> &nbsp; LISTA DE USUÁRIOS
+                      </a>
+                      <a href="/api/usuario/logout" class="btn btn-block btn-danger"> 
+                        <i class="fa fa-users"></i> &nbsp; Logout
+                      </a>
+                  </article>
+                  </div>
+              </div> 
+            </div>  
+          </div> 
+        </div>
+      </div> 
+    </div>
+  </section>
+</header>

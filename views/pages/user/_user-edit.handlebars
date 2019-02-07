@@ -1,0 +1,49 @@
+<br>
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">    
+            <div class="card">
+                <article class="card-body">
+                    <h4 class="card-title text-center mb-4 mt-1  alert alert-warning">Edição de usuário</h4>
+                    <hr>
+                    {{#if error}}
+                        <div class="alert alert-danger">
+                            {{error}}
+                        </div>
+                    {{/if}}
+                    {{#if success}}
+                        <div class="alert alert-success">
+                            {{success}}
+                        </div>
+                    {{/if}}
+                    {{#if token}}
+                        <input type="hidden" name="_token" value="{{token}}">
+                    {{/if}}
+                    <form action="/api/usuario/edit" method="POST" enctype="application/x-www-form-urlencoded">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                </div>
+                                <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" value="{{user.nome}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                                </div>
+                                <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" value="{{user.email}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success"> Atualizar informações </button>
+                        </div>
+                    </form>
+                </article>
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+</section>

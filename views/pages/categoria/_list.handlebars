@@ -1,0 +1,19 @@
+<br><br><br>
+<section class="container-fluid">
+  <div class="row">
+    {{#each categorias}}
+      <div class="col-sm-3">
+        <div class="card">
+          <div class="card-title">{{titulo}}</div>
+          <div class="card-body">{{descricao}}</div>
+        </div>
+      </div>
+    {{else}}
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+          <h4 class="alert alert-danger">Nenhuma categoria encontrada!</h4>
+      </div>
+      <div class="col-sm-4"></div>
+    {{/each}}
+</div>
+</section>
