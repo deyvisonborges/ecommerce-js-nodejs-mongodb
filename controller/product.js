@@ -5,7 +5,7 @@ const Produto = require('../repositories/product');
 // criando produto
 exports.create = async (req, res, next) => {
     try {
-        const tags = req.body.tag
+        const tags = req.body.tag;
         const produtoExiste = Produto.verifyProduct(req.body);
         if(!produtoExiste) {
             await Produto.create(req.body);

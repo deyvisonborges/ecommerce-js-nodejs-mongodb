@@ -1,18 +1,18 @@
 'use strict'
 
-const storage = require('node-sessionstorage')
-const jwt = require('jsonwebtoken')
-const Security = require('../bin/config/variables')
+const storage = require('node-sessionstorage');
+const jwt = require('jsonwebtoken');
+const Security = require('../bin/config/variables');
 
 module.exports.authorize = async (req, res, next) => {
     try {
-        const data = await storage.getItem('login')
+        const data = await storage.getItem('login');
         if(!data) {
-            return res.send('Acesso restrito')
+            return res.send('Acesso restrito');
         }
-        next()
+        next();
     } catch (err) {
-        next(err)
+        next(err);
     }
 }
 
@@ -25,7 +25,7 @@ module.exports.generateToken = async (data) => {
 
 // decodificando token
 module.exports.decoded = async (token) => {
-    const data = await jwt.decode(token, Security.AuthJson.secret)
-    return data
+    const data = await jwt.decode(token, Security.AuthJson.secret);
+    return data;
 }
 

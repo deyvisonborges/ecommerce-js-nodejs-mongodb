@@ -11,4 +11,4 @@ const variables = {
     }
 }
 
-module.exports = variables
+module.exports = variables;
