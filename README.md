@@ -20,3 +20,11 @@ Um sisteminha básico pra ajudar a galera que precisa evoluir nos estudos de Jav
 
 
 O sistema inclui também, funcionalidades para: editar, excluir e afins.
+
+
+
+Como o javascript 'nao possui' a mesma ideologia de interfaces que linguagens como C# e Java usam eu utilizei uma pasta services no repositorio, onde criei comportamentos isolados (pra poder parecerem com interfeces), onde sao assinadas como contrato no construtor do repositorio... assim eu meio que 'obrigo' o repositorio a utilizar as funcionalidades das interfaces, claro que nao vai obrigar  devido o js nao suportar, mas na pratica fica organizado e atende bem aos principios de SOLID.
+
+Com isso, temos o repositorio somente acessndo o banco, e as interfaces, que sao comportamentos mutaveis, isolei pra nao quebrar o escopo do repositorio e nao gerar uma dependencia.
+
+Qualquer objeção eh so me mandar um email web.dborges@gmail.com

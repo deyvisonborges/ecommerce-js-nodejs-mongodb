@@ -60,7 +60,7 @@ exports.postRegistro = async (req, res, next) => {
     try {
         const user = await User.registerVerification(req.body)
         if(!user) {
-            await User.create(req.body);
+            await new User(req.body).create();
             return res.render('pages/user/_register', {success: 'Usuário cadastrado com sucesso!'});
         } else {
             return res.render('pages/user/_register', {error: 'Usuário já foi cadastrado!'});

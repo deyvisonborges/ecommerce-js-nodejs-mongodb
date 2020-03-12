@@ -5,29 +5,29 @@ require('../models/user');
 const mongoose = require('mongoose');
 const user_model = mongoose.model('Usuario');
 
-const UserService = require('./services/user');
+const iUserCrypt = require('./services/iUserCrypt');
 
 class User {
     constructor(data){
         this._user = data;
-        this._service = UserService(data);
+        this._service_crypt = iUserCrypt(data);
     }
 
     async create() {
-        this._user = this._service.encryptPassword(this._user);
-        return await user_model(this._user).save()
+        this._user = this._service_crypt.encryptPassword(this._user);
+        return await user_model(this._user).save();
     }
 
     static async update(id, data) {
-        return await user_model.findOneAndUpdate(id, { $set: data })
+        return await user_model.findOneAndUpdate(id, { $set: data });
     }
 
     static async delete(id) {
-        return user_model.findOneAndDelete(id)
+        return user_model.findOneAndDelete(id);
     }
 
     static async getById(id) {
-        return await user_model.findById(id)
+        return await user_model.findById(id);
     }
 
     static async getAll() {
@@ -35,24 +35,24 @@ class User {
     }
 
     static async registerVerification(data) {
-        const { email } = data
-        const user = await user_model.findOne({email})
-        return user
+        const { email } = data;
+        const user = await user_model.findOne({email});
+        return user;
     }
 
-    static async loginVerification(data) {
-        const { email, senha } = data
+    static async get(data) {
+        const { email, senha } = data;
         const user = await user_model.findOne({email}).select('+senha');
         return user;
     }
 
     static async getUsersQtd() {
-        const qtd = await user_model.collection.estimatedDocumentCount()
+        const qtd = await user_model.collection.estimatedDocumentCount();
         return qtd;
     }
 }
 
-module.exports = User
+module.exports = User;
 
 
 // https://khalilstemmler.com/articles/solid-principles/solid-typescript/
