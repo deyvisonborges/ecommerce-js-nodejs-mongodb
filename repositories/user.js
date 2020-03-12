@@ -10,7 +10,7 @@ const iUserCryptInfo = require('./services/iUserCryptInfo');
 class User {
     constructor(data){
         this._user = data;
-        this._service_crypt = iUserCryptInfo(data);
+        this._service_crypt = iUserCryptInfo(data); // o massa eh que voce pode ou nao utilizar essaa interface, ISP
     }
 
     async create() {
