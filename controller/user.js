@@ -20,7 +20,6 @@ exports.get = async (req, res, next) => {
 exports.getById = async (req, res, next) => {
     try {
         const user = await User.getById(req.params.id);
-        const tags = req.body.tag;
         if(user) {
             return res.render('pages/user/_user-edit', {user: user, success: 'Encontramos o usuário!'});
         } else {
