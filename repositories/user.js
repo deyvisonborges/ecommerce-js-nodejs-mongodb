@@ -5,12 +5,12 @@ require('../models/user');
 const mongoose = require('mongoose');
 const user_model = mongoose.model('Usuario');
 
-const iUserCrypt = require('./services/iUserCrypt');
+const iUserServices = require('./services/iUserServices');
 
 class User {
     constructor(data){
         this._user = data;
-        this._service_crypt = iUserCrypt(data);
+        this._service_crypt = iUserServices(data);
     }
 
     async create() {
