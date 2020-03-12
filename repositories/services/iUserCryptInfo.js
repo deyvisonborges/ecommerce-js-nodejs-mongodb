@@ -9,7 +9,7 @@ const salt = 10
  * quando eu quiser sem afetar o escopo do repositorio. (cada um com 
  * sua responsabilidade: um salva, o outro valida)
  */
-class iUserServices {
+class iUserCryptInfo {
     constructor(data) {
         this._user = data;
     }
@@ -25,7 +25,7 @@ class iUserServices {
     }
 }
 
-module.exports = new iUserServices();
+module.exports = new iUserCryptInfo();
 
 /**
  * eh uma especie de contrato mesmo
