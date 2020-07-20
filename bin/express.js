@@ -40,7 +40,7 @@ app.use((req, res, next) => {
     res.render('pages/errors/404'); 
 }); // tratamento para erro 404
 app.use((err, req, res, next) => { 
-    res.send(err.message); 
+    res.send(err);
 }); // tratamento para demais erros
 
 module.exports = app;

@@ -1,7 +1,7 @@
 'use strict'
 
 const User = require('../repositories/user'); // acessando repositorio do banco de dados
-const auth = require('../middlewares/auth'); // token
+const auth = require('../middlewares/authentication'); // token
 const crypt = require('bcryptjs'); // para criptografar a senha
 const storage = require('node-sessionstorage'); // para autenticar
 

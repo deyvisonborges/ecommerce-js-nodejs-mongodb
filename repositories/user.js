@@ -5,7 +5,7 @@ require('../models/user');
 const mongoose = require('mongoose');
 const user_model = mongoose.model('Usuario');
 
-const iUserCryptInfo = require('./services/iUserCryptInfo');
+const iUserCryptInfo = require('../middlewares/authentication');
 
 class User {
     constructor(data){
