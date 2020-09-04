@@ -25,7 +25,7 @@
     "jsonwebtoken": "^8.4.0",
     "localtoken": "^0.1.2",
     "md5": "^2.2.1",
-    "mongodb": "^3.1.10",
+    "mongodb": "^3.1.13",
     "mongoose": "^5.3.13",
     "node-sessionstorage": "^1.0.0",
     "nodemon": "^1.18.9",
