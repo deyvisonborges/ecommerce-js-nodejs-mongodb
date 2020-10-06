@@ -1,5 +1,5 @@
 {
-  "name": "ionicFood",
+  "name": "ecommerce-nodejs",
   "version": "1.0.0",
   "main": "server.js",
   "bin": {
@@ -35,7 +35,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon ./src/server.js"
   },
   "keywords": [],
   "author": "",
