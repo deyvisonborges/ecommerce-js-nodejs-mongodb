@@ -4,14 +4,14 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const hbs = require('express-handlebars');
 
-const environments = require('../../env');
+const environments = require('../env');
 
 // app
 const app = express();
 
 // chamando as rotas
-const userRoutes = require('../routes/user');
-const productRoutes = require('../routes/product');
+const userRoutes = require('../routes/user.routes');
+const productRoutes = require('../routes/product.routes');
 
 // configurando a conexao com o bando de dados
 mongoose.Promise = global.Promise;

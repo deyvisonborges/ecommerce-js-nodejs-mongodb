@@ -3,7 +3,7 @@
 const storage = require('localtoken');
 const jwt = require('jsonwebtoken');
 
-const environments = require('../../env');
+const environments = require('../env');
 
 const authenticationToken = environments.authenticationToken.secret;
 
