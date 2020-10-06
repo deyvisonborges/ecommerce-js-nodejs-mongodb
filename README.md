@@ -1,3 +1,7 @@
+### Esse projeto já existe há mais de 2 anos. Estou revendo ele e tentando deixar mais acessível.
+### A última alteração que fiz corrigiu o cadastro do usuário e refiz também a estrutura.
+
+
 # ECommerce - JavaScript, NodeJS e MongoDB
 Um sisteminha básico pra ajudar a galera que precisa evoluir nos estudos de Java e Interface Gráfica.
 
