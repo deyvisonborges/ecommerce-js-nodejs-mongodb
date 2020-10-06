@@ -32,7 +32,7 @@ class User {
     return user;
   }
 
-  static async get(data) {
+  static async loginVerification(data) {
     const { email, senha } = data;
     const user = await userModel.findOne({ email }).select('+senha');
     return user;

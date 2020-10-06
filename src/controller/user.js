@@ -3,7 +3,7 @@
 const User = require('../repositories/user'); // acessando repositorio do banco de dados
 const auth = require('../middlewares/authentication'); // token
 const crypt = require('bcryptjs'); // para criptografar a senha
-const storage = require('node-sessionstorage'); // para autenticar
+const storage = require('localtoken'); // para autenticar
 
 // buscando usuario
 exports.get = async (req, res, next) => {
@@ -90,19 +90,22 @@ exports.getLogin = (req, res) => {
 exports.postLogin = async (req, res, next) => {
   try {
     const user = await User.loginVerification(req.body);
-    console.log('....', user)
+
     if (!user)
       // se o usuario nao existe...
       return res.render('pages/user/_login', {
         error: 'O Usuário não foi encontrado!',
       });
 
-    if (!(await crypt.compare(req.body.senha, user.senha)))
+    if (await crypt.compare(req.body.senha, user.senha)) {
       // se as senhas nao combinam...
       return res.render('pages/user/_login', { error: 'Senha inválida!' });
+    }
 
-    const token = await auth.generateToken({ user });
-    storage.setItem('login', token);
+    const token = auth.generateToken({ user });
+    console.log('token', token)
+    storage.setInLocal('login', token);
+
     return res.render('pages/user/_login', {
       success: 'Usuário logado com sucesso!',
     });
@@ -112,9 +115,9 @@ exports.postLogin = async (req, res, next) => {
 };
 
 // logout - removendo token da 'sessão'
-exports.logout = async (req, res, next) => {
+exports.logout = (req, res, next) => {
   try {
-    await storage.removeItem('login');
+    storage.removeLocal('login');
     return res.redirect('/');
   } catch (err) {
     next(err);
