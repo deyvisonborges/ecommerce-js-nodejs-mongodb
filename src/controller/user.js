@@ -3,12 +3,14 @@
 const User = require('../repositories/user'); // acessando repositorio do banco de dados
 const auth = require('../middlewares/authentication'); // token
 const crypt = require('bcryptjs'); // para criptografar a senha
-const storage = require('localtoken'); // para autenticar
+const cookie = require('js-cookie').noConflict;
 
 // buscando usuario
 exports.get = async (req, res, next) => {
   try {
+    console.log('1');
     const users = await User.getAll();
+    console.log(users);
     const qtd = await User.getUsersQtd();
     return res.render('pages/user/_users-list', { user: users, qtd: qtd });
   } catch (err) {
@@ -67,7 +69,7 @@ exports.postRegistro = async (req, res, next) => {
   try {
     const user = await User.registerVerification(req.body);
     if (!user) {
-      const novoUsuario = await User.create(req.body);
+      await User.create(req.body);
       return res.render('pages/user/_register', {
         success: 'Usuário cadastrado com sucesso!',
       });
@@ -91,20 +93,22 @@ exports.postLogin = async (req, res, next) => {
   try {
     const user = await User.loginVerification(req.body);
 
-    if (!user)
+    if (!user) {
       // se o usuario nao existe...
       return res.render('pages/user/_login', {
         error: 'O Usuário não foi encontrado!',
       });
+    }
 
-    if (await crypt.compare(req.body.senha, user.senha)) {
+    if (!(await crypt.compare(req.body.senha, user.senha))) {
       // se as senhas nao combinam...
       return res.render('pages/user/_login', { error: 'Senha inválida!' });
     }
 
     const token = auth.generateToken({ user });
-    console.log('token', token)
-    storage.setInLocal('login', token);
+    console.log(token);
+    cookie.set('login', token, { expires: 1 });
+    console.log(cookie.getJSON('login'));
 
     return res.render('pages/user/_login', {
       success: 'Usuário logado com sucesso!',
@@ -117,7 +121,7 @@ exports.postLogin = async (req, res, next) => {
 // logout - removendo token da 'sessão'
 exports.logout = (req, res, next) => {
   try {
-    storage.removeLocal('login');
+    cookie.remove('login');
     return res.redirect('/');
   } catch (err) {
     next(err);

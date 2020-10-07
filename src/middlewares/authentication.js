@@ -1,15 +1,15 @@
 'use strict';
 
-const storage = require('localtoken');
 const jwt = require('jsonwebtoken');
+const cookie = require('js-cookie').noConflict;
 
 const environments = require('../env');
 
 const authenticationToken = environments.authenticationToken.secret;
 
-module.exports.authorize = async (req, res, next) => {
+module.exports.authorize = (req, res, next) => {
   try {
-    const data = await storage.setInLocal('login');
+    const data = cookie.get('login');
     if (!data) {
       return res.send('Acesso restrito');
     }

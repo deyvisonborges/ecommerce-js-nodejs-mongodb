@@ -1,4 +1,5 @@
-const lc = require('localtoken');
+const cookie = require('js-cookie');
+
 
 const authorize = (SECRET_AUTH) => async (req, res, next) => {
   try {
@@ -6,7 +7,7 @@ const authorize = (SECRET_AUTH) => async (req, res, next) => {
       throw new Error('Security token not injected');
     } else {
       const headerToken = req.headers['authorization'];
-      const localToken = await lc.getInLocal('token');
+      const localToken = await cookie.get('login');
 
       if (!headerToken || !localToken) {
         throw new Error('Token not found');

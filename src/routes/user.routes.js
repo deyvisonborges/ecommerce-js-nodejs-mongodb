@@ -6,7 +6,7 @@ const userControllers = require('../controller/user');
 const authentication = require('../middlewares/authentication');
 
 // GET for rotas
-userRoutes.get('/', authentication.authorize, userControllers.get);
+userRoutes.get('/', userControllers.get);
 userRoutes.get('/registro', userControllers.getRegistro);
 userRoutes.get('/login', userControllers.getLogin);
 userRoutes.get('/logout', userControllers.logout);
