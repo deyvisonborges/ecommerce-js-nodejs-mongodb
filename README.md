@@ -1,5 +1,10 @@
-### Esse projeto já existe há mais de 2 anos. Estou revendo ele e tentando deixar mais acessível.
-### A última alteração que fiz corrigiu o cadastro do usuário e refiz também a estrutura.
+# Aviso
+Este projeto existe há mais de 2 anos. 
+Estou analisando tentando deixar mais acessível. <br>
+A última alteração que fiz corrigiu várias imcompatibilidades com módulos e alterações que fiz.
+
+A biblioteca handlebars mudou algumas formas de renderizar parte do coteúdo, então, você ver inconcistências.
+
 
 
 # ECommerce - JavaScript, NodeJS e MongoDB
